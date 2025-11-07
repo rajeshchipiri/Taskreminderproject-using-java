@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TaskReminder" default="jar">
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="out"/>
+    <property name="jar.file" value="TaskReminder.jar"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete file="${jar.file}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="${jar.file}" basedir="${build.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="com.taskreminder.Main"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
